@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.diegomottadev.appnutrirecipes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "scheme": "appnutrirecipes",
+    "extra": {
+      "eas": {
+        "projectId": "830f1742-4e13-4da7-88a0-5b7dd8c6f9d6"
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, ImageBackground, ScrollView } from "react-native";
-import { TextInput, Button, Card } from "react-native-paper";
+import { Button, Card } from "react-native-paper";
 // import CalorieRangeSlider from '../components/CaloriesRangeSlider';
-import DualRangeSliderCalories from "../components/DualRangeSliderCalories";
+// import DualRangeSliderCalories from "../components/DualRangeSliderCalories";
 import OneRangeSliderPerson from "../components/OneRangeSliderPerson";
 
 export default function FoodScreen() {
@@ -80,30 +80,24 @@ export default function FoodScreen() {
       <Card style={styles.card}>
         <Card.Content>
           <Text style={styles.title}>Nutrirecetas</Text>
-          <DualRangeSliderCalories
+          {/* <DualRangeSliderCalories
             rangeValues={calorieRange}
             onRangeValuesChange={handleCalorieRangeChange}
-          />
+          /> */}
           <OneRangeSliderPerson
             rangeValuesPerson={peopleCount}
             onRangeValuesPersonChange={handlePersonRangeChange}
           />
-          {/* <TextInput
-            label="Cantidad de Personas"
-            style={styles.input}
-            keyboardType="numeric"
-            value={peopleCount}
-            onChangeText={(text) => setPeopleCount(text)}
-          /> */}
+
           <Text style={styles.label}>Seleccione una comida:</Text>
           <View style={styles.buttonContainer}>
             <Button
               mode={selectedMeal === "Desayuno" ? "elevate" : "contained"}
               onPress={() => setSelectedMeal("Desayuno")}
               style={styles.button}
-              // Establece el estilo del texto del botón
-            >
-              <Text style={{ fontSize: "24px" }}>Desayuno</Text>
+              labelStyle={styles.buttonText}
+              >
+              Desayuno
             </Button>
             <Button
               mode={selectedMeal === "Almuerzo" ? "elevate" : "contained"}
@@ -130,7 +124,7 @@ export default function FoodScreen() {
               Cena
             </Button>
           </View>
-          {/* <Button title="Enviar Comida" onPress={handleSubmit} /> */}
+          <Button mode="contained"  labelStyle={styles.buttonText} style={styles.acceptButton}  onPress={handleSubmit}> Aceptar </Button>
         </Card.Content>
       </Card>
     </View>
@@ -164,6 +158,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center", // Centra horizontalmente
+    fontFamily: "GloriaHallelujah-Regular"
   },
   input: {
     marginBottom: 20,
@@ -187,8 +182,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF3E30",
   },
   buttonText: {
-    fontSize: 28, // Reducimos el tamaño de la fuente para que quepa
+    fontSize: 24, // Reducimos el tamaño de la fuente para que quepa
     textAlign: "center",
-    fontFamily: "OpenSans-Medium"
+    fontFamily: "OpenSans-Medium",
+  },
+  acceptButton: {
+    marginVertical: 10,
+    height: 60, // Aumentamos la altura del botón
+    justifyContent: "center",
+    backgroundColor: "rgb(103, 80, 164);", // Color de fondo del botón
   },
 });
+
+
+
+
+
+

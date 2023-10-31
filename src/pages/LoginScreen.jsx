@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, ImageBackground } from 'react-native';
-import { Button, Title, TextInput } from 'react-native-paper';
+import { Button, Title } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri } from 'expo-auth-session';
+// import * as AuthSession from 'expo-auth-session';
 
 WebBrowser.maybeCompleteAuthSession();
+// const redirectUri = AuthSession.makeRedirectUri();
+const EXPO_REDIRECT_PARAMS = {  scheme: 'appnutrirecipes' };
 
 export default function LoginScreen({navigation}) {
   const [userInfo, setUserInfo] = useState(null);
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: '338701468364-p64uvh041cq9c0go3bregn13rpclteef.apps.googleusercontent.com',
+    androidClientId: '338701468364-jelqblu7u5cvv4qg82q5cv5l08bt2hmp.apps.googleusercontent.com',
     webClientId: '338701468364-5s2093k9tgj6tvp781k587t4194nd1c7.apps.googleusercontent.com',
+    expoClientId: '338701468364-5s2093k9tgj6tvp781k587t4194nd1c7.apps.googleusercontent.com',
+    scopes: ['openid','email'],
+    
+  },{
+    projectNameForProxy: "@diegomottadev/appnutrirecipes"
   });
 
   useEffect(() => {
@@ -64,15 +73,17 @@ export default function LoginScreen({navigation}) {
         <Button
           mode="contained"
           style={styles.googleButton}
-          onPress={promptAsync}
+          onPress={()=> promptAsync()}
           disabled={!request}
+          labelStyle={styles.buttonText}
         >
-          Iniciar sesión con Google
+          Google
         </Button>
         {userInfo && (
           <Button
             mode="outlined"
             style={styles.logoutButton}
+            labelStyle={styles.buttonText}
             onPress={() => {
               AsyncStorage.removeItem('@user');
               setUserInfo(null);
@@ -103,6 +114,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
+    fontFamily: 'GloriaHallelujah-Regular',
     marginBottom: 20,
   },
   googleButton: {
@@ -119,5 +131,12 @@ const styles = StyleSheet.create({
   userInfo: {
     fontSize: 18,
     marginBottom: 20,
+  },
+  buttonText: {
+    fontSize: 25, // Reducimos el tamaño de la fuente para que quepa
+    textAlign: "center",
+    fontFamily: "OpenSans-Medium",
+    fontWeight: "bold",
+    lineHeight: 30
   },
 });

@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, StyleSheet, ScrollView, Picker, ImageBackground, Dimensions } from "react-native";
-import { TextInput, Button, Text, Avatar, Card, Title, Paragraph } from 'react-native-paper';
+import { View, StyleSheet, Text, ScrollView, ImageBackground } from "react-native";
+import { TextInput, Button, Avatar, Card, Title } from 'react-native-paper';
+import {Picker} from '@react-native-picker/picker';
 
 export default function RegistrationScreen({ route }) {
 
@@ -28,7 +29,7 @@ export default function RegistrationScreen({ route }) {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled" // Evita que el teclado cierre el ScrollView
       >
-        <View style={styles.centeredContainer}> {/* Contenedor centrado */}
+        <View style={styles.centeredContainer}> 
           <Card style={styles.card}>
             <Card.Content>
               <View style={styles.profileContainer}>
@@ -64,7 +65,7 @@ export default function RegistrationScreen({ route }) {
                   }
                 }}
               />
-              <Text style={styles.genderLabel}>Género</Text>
+              <Text style={styles.sectionTitle}>Género</Text>
               <View style={styles.pickerContainer}>
                 <Picker
                   selectedValue={gender}
@@ -102,7 +103,7 @@ export default function RegistrationScreen({ route }) {
               />
 
               <Button mode="contained" style={styles.registerButton} onPress={handleNavigationFood}>
-                Registrar
+                   Registrar
               </Button>
             </Card.Content>
           </Card>
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 56,
     padding: 4,
-    fontFamily: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif',
+    fontFamily: 'OpenSans-Medium',
     letterSpacing: 0.15,
     lineHeight: 19.2,
     fontSize: 16,

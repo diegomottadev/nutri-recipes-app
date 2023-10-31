@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "app-nutri-recipes",
-    "slug": "app-nutri-recipes",
+    "name": "appnutrirecipes",
+    "slug": "appnutrirecipes",
+    "currentFullName": "@diegomottadev/appnutrirecipes",
+    "originalFullName":"@diegomottadev/appnutrirecipes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,11 +20,11 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.diegomottadev.appnutrirecipes",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.diegomottadev.appnutrirecipes"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
